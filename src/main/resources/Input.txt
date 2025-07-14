@@ -1,0 +1,57 @@
+input file.
+
+retrive rental history of perticuler customer.
+http://localhost:8989/quick-rent/rent-history/1002
+
+---------------------------------------------
+
+delete the customer based on driving licence
+http://localhost:8989/quick-rent/delete
+{
+  "drivingLicenceNo": "MH01AB1236789"
+}
+----------------------------------------------
+
+Register a new Customer to the rental-system.
+http://localhost:8989/quick-rent/register-customer
+{
+  "customerName": "Sanjay",
+  "drivingLicenceNo": "KA29EF1234567",
+  "age": 25
+}
+
+----------------------------------------------------
+
+Add new Vehicle 
+http://localhost:8989/quick-rent/add-vehicle
+{
+  "vehicleNo": "KA05AB1234",
+  "vehicleName": "Activa 6G",
+  "price": 500,
+  "bookingStatus": "AVAILABLE",
+  "vehicleType": "SCOOTER"
+}
+
+-------------------------------------------------
+
+Rent a vehicle with pickupdate and dropoffdate
+http://localhost:8989/quick-rent/rent-vehicle
+{
+  "customerId": 1006,
+  "vehicleNo": "DEF-789",
+  "dropOffDate": "2025-07-20"
+}
+
+------------------------------------------------
+
+Return vehicle to the rental system
+http://localhost:8989/quick-rent/return-vehicle
+{
+  "customerId": 1006,
+  "vehicleNo": "DEF-789",
+  "actualDropOffDate": "2025-07-20"
+}
+
+
+
+

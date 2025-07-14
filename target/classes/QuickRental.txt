@@ -1,0 +1,54 @@
+DROP SCHEMA IF EXISTS QUICKRENTAL;
+CREATE SCHEMA QUICKRENTAL;
+USE QUICKRENTAL;
+
+CREATE TABLE Vehicle(
+	vehicle_no VARCHAR(20) PRIMARY KEY,
+    vehicle_name VARCHAR(255),
+    price INT,
+    vehicle_type VARCHAR(20),
+    booking_status VARCHAR(20)
+);
+
+CREATE TABLE Customer(
+	customer_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_name VARCHAR(255),
+    driving_licence_no VARCHAR(50),
+    age INT
+);
+
+CREATE TABLE rental_history(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT,
+    vehicle_no VARCHAR(20),
+    pick_up_date DATE,
+    drop_off_date DATE,
+    FOREIGN KEY (customer_id) REFERENCES Customer(customer_id),
+    FOREIGN KEY (vehicle_no) REFERENCES Vehicle(vehicle_no)
+);
+
+INSERT INTO Vehicle (vehicle_no, vehicle_name, price, vehicle_type, booking_status) VALUES
+('ABC-123', 'Toyota Camry', 25000, 'BIKE', 'AVAILABLE'),
+('XYZ-456', 'Honda Civic', 22000, 'BIKE', 'BOOKED'),
+('DEF-789', 'Ford F-150', 35000, 'SCOOTER', 'AVAILABLE'),
+('GHI-012', 'Jeep Wrangler', 30000, 'CAR', 'BOOKED'),
+('JKL-345', 'Tesla Model 3', 45000, 'EV', 'AVAILABLE');
+
+INSERT INTO Customer (customer_id, customer_name, driving_licence_no, age) VALUES
+(1001, 'John Doe', 'MH01AB1234567', 30),
+(1002, 'Jane Smith', 'KA02CD9876543', 25),
+(1003, 'David Lee', 'TN03EF0000001', 40),
+(1004, 'Emily Chen', 'TS04GH5555555', 28),
+(1005, 'Michael Brown', 'MH01AB1236789', 35);
+
+INSERT INTO rental_history (id, customer_id, vehicle_no, pick_up_date, drop_off_date) VALUES
+(301,1001, 'ABC-123', '2023-10-26', '2023-10-30'),
+(302,1001, 'GHI-012', '2023-11-01', '2023-11-05'),
+(303,1002, 'DEF-789', '2023-11-10', '2023-11-15'),
+(304,1003, 'JKL-345', '2023-11-20', '2023-11-25'),
+(305,1004, 'XYZ-456', '2023-12-01', '2023-12-04');
+
+select * from customer;
+select * from vehicle;
+select * from rental_history;
+    

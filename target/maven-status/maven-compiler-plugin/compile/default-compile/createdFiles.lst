@@ -1,0 +1,16 @@
+com\sanjay\api\QuickRentalApi.class
+com\sanjay\exception\QuickRentalException.class
+com\sanjay\App.class
+com\sanjay\dto\VehicleDTO.class
+com\sanjay\utility\ErrorInfo.class
+com\sanjay\service\QuickVehicleService.class
+com\sanjay\entity\Vehicle.class
+com\sanjay\dto\CustomerDTO.class
+com\sanjay\dto\BookingStatus.class
+com\sanjay\utility\LoggingAspect.class
+com\sanjay\repository\CustomerRepository.class
+com\sanjay\entity\Customer.class
+com\sanjay\entity\RentalHistory.class
+com\sanjay\dto\RentalHistoryDTO.class
+com\sanjay\service\QuickVehicleServiceImpl.class
+com\sanjay\dto\VehicleType.class
