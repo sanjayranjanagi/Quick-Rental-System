@@ -11,6 +11,8 @@ import com.sanjay.entity.Vehicle;
 @Repository
 public interface VehicleRepository extends JpaRepository<Vehicle, String> {
     List<Vehicle> findByBookingStatus(BookingStatus bookingStatus);
+    
+    List<Vehicle> findByVehicleNoNotIn(List<String> vehicleNos);
 
 }
 

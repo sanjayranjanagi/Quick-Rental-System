@@ -17,9 +17,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sanjay.dto.CancelBooking;
 import com.sanjay.dto.CustomerDTO;
+import com.sanjay.dto.ExtendBooking;
 import com.sanjay.dto.RentalRequestDTO;
 import com.sanjay.dto.ReturnRequestDTO;
+import com.sanjay.dto.SearchVehicle;
 import com.sanjay.dto.VehicleDTO;
 import com.sanjay.exception.QuickRentalException;
 import com.sanjay.service.QuickVehicleService;
@@ -88,8 +91,22 @@ public class QuickRentalApi {
 	    return new ResponseEntity<>(availableVehicles, HttpStatus.OK);
 	}
 
+	@PostMapping("/search")
+	public ResponseEntity<List<VehicleDTO>> searchByDate(@RequestBody SearchVehicle dto) throws QuickRentalException {
+	    List<VehicleDTO> result = quickVehicleService.searchAvailableVehicles(dto.getStartDate(), dto.getEndDate());
+	    return ResponseEntity.ok(result);
+	}
+	
+	@PostMapping("/extend-booking")
+	public ResponseEntity<String> extendBooking(@RequestBody ExtendBooking dto) throws QuickRentalException {
+	    String msg = quickVehicleService.extendBooking(dto);
+	    return new ResponseEntity<>(msg, HttpStatus.OK);
+	}
 
-
-
+	@PostMapping("/cancel-booking")
+	public ResponseEntity<String> cancelBooking(@RequestBody  CancelBooking dto) throws QuickRentalException {
+	    String msg = quickVehicleService.cancelBooking(dto);
+	    return new ResponseEntity<>(msg, HttpStatus.OK);
+	}
 
 }
